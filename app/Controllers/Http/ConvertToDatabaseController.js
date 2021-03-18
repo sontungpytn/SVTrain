@@ -18,8 +18,8 @@ class ConvertToDatabaseController {
   async index({request}) {
     let workSpace = request.post().workspace;
     let createdWorkspace = await Workspace.findOrCreate(
-      getAttributes(workSpace, ['name', 'notes', 'highlight_note']),
-      getAttributes(workSpace, ['name', 'notes', 'highlight_note'])
+      getAttributes(workSpace, ['name', 'notes', 'highlight']),
+      getAttributes(workSpace, ['name', 'notes', 'highlight'])
     );
     let wsNo = createdWorkspace.no || createdWorkspace.id;
     // insert workspace setting
@@ -94,13 +94,13 @@ class ConvertToDatabaseController {
       item.configPath = item.config.configPath;
       item.path = item.config.path;
       item.notesPath = path.join(path.dirname(item.path), 'notes.txt');
-      item.highlight = item.highlight_note !== 0;
+      item.highlight = item.highlight !== 0;
       if (item.batches.length)
         item.hasSubFolders = true;
       delete item.settings;
       delete item.config.configPath;
       delete item.config.path;
-      delete item.highlight_note;
+      delete item.highlight;
     }
 
     return ws;

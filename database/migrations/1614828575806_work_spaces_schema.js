@@ -9,7 +9,7 @@ class WorkSpacesSchema extends Schema {
       table.increments('no')
       table.string('name', 254);
       table.string('notes', 254);
-      table.boolean('highlight_note');
+      table.boolean('highlight');
       table.timestamps()
     })
   }
