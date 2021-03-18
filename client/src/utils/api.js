@@ -32,10 +32,13 @@ const urls = {
   listStatistics: `${baseurl}list-statistics`,
   confusionMatrix: `${baseurl}fetch-confusion-matrix`,
   getFoldersByPath: (dir) => (dir ? `${baseurl}get-folders?dir=${dir}` : `${baseurl}get-folders`),
+  getWorkSpaces: (wsName) => (wsName ? `${baseurl}v2/get-workspaces?ws_name=${wsName}` : `${baseurl}v2/get-workspaces`),
+  getFilesV2: (wsNo) => (`${baseurl}v2/file?ws_no=${wsNo}`),
 }
 
 export default {
   getFiles: async (path, to) => (await axios.get(urls.getFiles(path || '', to))).data,
+  getFilesV2: async (wsNo) => (await axios.get(urls.getFilesV2(wsNo))).data,
   getParent: async (path) => (await axios.get(urls.getParentDirectory(path))).data,
   getNextFolders: async (path) => (await axios.get(urls.getNextFolders(path))).data,
   getStatistic: async (path) => (await axios.get(urls.getStatistic(path))).data,
@@ -100,7 +103,7 @@ export default {
     path,
     config,
   })).data,
-  getFoldersByPath: async (dir = null) => (await axios.get(urls.getFoldersByPath(dir))).data,
+  getFoldersByPath: async (dir = null) => (await axios.get(urls.getWorkSpaces(dir))).data,
   listStatistics: async (dirs = []) => (await axios.post(urls.listStatistics, {
     dirs,
   })).data,

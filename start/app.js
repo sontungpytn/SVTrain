@@ -24,6 +24,7 @@ const providers = [
   '@adonisjs/websocket/providers/WsProvider',
   '@adonisjs/drive/providers/DriveProvider',
   path.join(__dirname, '..', 'providers', 'AppProvider'),
+  path.join(__dirname, '..', 'providers', 'Queue/provider')
 ]
 
 /*

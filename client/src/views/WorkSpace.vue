@@ -204,7 +204,7 @@ export default {
         })
       this.$router.push({
         name: 'explorer',
-        query: { dir: folder.path },
+        query: { no: folder.no, dir: folder.path },
       })
     },
     onFolderCreated() {
@@ -286,7 +286,6 @@ export default {
       justify-content: space-between;
       padding-left: 10px;
       border-radius: 8px;
-
 
       .margin-keeper {
         margin-left: 18px;
