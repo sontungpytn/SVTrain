@@ -88,6 +88,15 @@
               @click="showConfig"
             />
           </span>
+          <span class="icon-wrapper">
+            <b-icon
+              v-b-tooltip.hover title="Convert to database"
+              :class="'clickable-icon'"
+              icon="arrow-repeat"
+              font-scale="1.8"
+              @click="convertToDB()"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -117,6 +126,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EventBus from '../utils/eventbus'
+import api from '../utils/api'
 
 export default {
   name: 'WorkspaceFolder',
@@ -228,6 +238,14 @@ export default {
       if (this.wsPath !== this.info.path && this.depth === 0) {
         EventBus.$emit('show-confusion-matrix', this.info.path)
       }
+    },
+    async convertToDB() {
+      await api.convertToDB({
+        path: this.info.path,
+        name: this.info.name,
+        notes: this.info.notes,
+        highlight: this.info.highlight,
+      })
     },
   },
   mounted() {

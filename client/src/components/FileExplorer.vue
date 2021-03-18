@@ -241,6 +241,7 @@ function preventDefaultScrolling(e) {
 export default {
   props: [
     'dir',
+    'no',
   ],
   components: {
     File,
@@ -718,7 +719,7 @@ export default {
       this.selectedFiles = []
 
       // load data
-      const content = await api.getFiles(path)
+      const content = await api.getFilesV2(path)
 
       // prepare files
       this.folder.files = content.files.map((f) => {
@@ -965,7 +966,7 @@ export default {
   },
   async created() {
     this.perPage = this.configFilePerPage
-    const { currentPath } = await this.loadFiles(this.dir || null)
+    const { currentPath } = await this.loadFiles(this.no)
     this.createdFolders = this.folder.folders
     await this.loadStatistic(this.dir || currentPath || this.path || null)
     // set current path if he hasn't defined

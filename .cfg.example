@@ -13,6 +13,7 @@
   "deleteDefaultFolder": "Deleted_files",
   "selectedPath": "Selected_new",
   "notSelectedPath": "Not_Selected",
+  "ImageStorage": "ImageStorage",
   "forwardOnly": true,
   "buttonFontSize": "1rem",
   "titleFontSize": "1rem",

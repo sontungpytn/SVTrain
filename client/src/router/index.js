@@ -19,7 +19,7 @@ const routes = [
         name: 'explorer',
         path: '/explorer/',
         component: () => import('../views/Explorer'),
-        props: (route) => ({ dir: route.query.dir }),
+        props: (route) => ({ dir: route.query.dir, no: route.query.no }),
         meta: {
           permission: 'classify',
         },
